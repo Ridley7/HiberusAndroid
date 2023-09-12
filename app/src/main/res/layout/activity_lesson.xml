@@ -70,5 +70,17 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_lesson"
         tools:itemCount="30" />
+    
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_lessons_add_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/vertical_large_margin"
+        android:layout_marginEnd="@dimen/horizontal_large_margin"
+        android:src="@android:drawable/ic_input_add"
+        android:tint="@color/white"
+        android:backgroundTint="@color/lesson_add_button_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
