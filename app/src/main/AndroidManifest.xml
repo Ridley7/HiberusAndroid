@@ -13,6 +13,12 @@
         android:theme="@style/Theme.HeroesYHeroinas"
         tools:targetApi="31">
         <activity
+            android:name=".helloappfragment.HelloAppFragmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".helloprefs.SharedPreferencsActivity"
+            android:exported="false" />
+        <activity
             android:name=".lessonapp.LessonActivity"
             android:exported="false" />
         <activity

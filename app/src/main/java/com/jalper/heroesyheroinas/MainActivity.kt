@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.jalper.heroesyheroinas.databinding.ActivityMainBinding
 import com.jalper.heroesyheroinas.helloapp.HelloActivity
+import com.jalper.heroesyheroinas.helloappfragment.HelloAppFragmentActivity
 import com.jalper.heroesyheroinas.lessonapp.LessonActivity
 
 class MainActivity : AppCompatActivity() {
@@ -27,6 +28,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnMenuLessonButton.setOnClickListener{
             startActivity(Intent(this, LessonActivity::class.java))
+        }
+
+        binding.btnMenuFragmentExampleButton.setOnClickListener{
+            startActivity(Intent(this, HelloAppFragmentActivity::class.java))
         }
     }
 }
