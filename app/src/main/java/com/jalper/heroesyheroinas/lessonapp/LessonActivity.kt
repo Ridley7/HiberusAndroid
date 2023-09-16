@@ -69,15 +69,37 @@ class LessonActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    private fun updateLessonsListView(){
+    private fun removeItem(position: Int){
+        //Da fallos por culpa del índice si se han realizado filtros primero
+        //Se deja por motivos de avance académico
+        lessonsList.removeAt(position)
+        updateLessonsListView() //Aqui esta el problema
+    }
 
+    private fun updateLessonsListView(){
+        val selectedLanguage: List<Language> = languagesList.filter { it.isSelected }
+        val showableLessons = lessonsList.filter { it.language in selectedLanguage }
+
+        (binding.rvLessonLessons.adapter as LessonsAdapter).lessons = showableLessons
+
+        binding.rvLessonLessons.adapter?.notifyDataSetChanged();
+    }
+
+    private fun updateLanguagesListView(){
+        binding.rvLessonLanguages.adapter?.notifyDataSetChanged()
+    }
+
+    private fun selectLanguage(position: Int){
+        languagesList[position].isSelected = !languagesList[position].isSelected
+        updateLanguagesListView()
+        updateLessonsListView()
     }
 
     private fun initUI(){
         //Creamos la lista de lenguajes de programacion
-        binding.rvLessonLanguages.adapter = LanguagesAdapter(languagesList)
+        binding.rvLessonLanguages.adapter = LanguagesAdapter(languagesList){position: Int -> selectLanguage(position)}
 
         //Creamos la lista de lecciones
-        binding.rvLessonLessons.adapter = LessonsAdapter(lessonsList)
+        binding.rvLessonLessons.adapter = LessonsAdapter(lessonsList) {position: Int -> removeItem(position)}
     }
 }

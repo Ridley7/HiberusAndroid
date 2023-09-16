@@ -7,7 +7,8 @@ import com.jalper.heroesyheroinas.databinding.ItemLessonBinding
 import com.jalper.heroesyheroinas.lessonapp.model.Lesson
 
 class LessonsAdapter (
-    var lessons: List<Lesson>
+    var lessons: List<Lesson>,
+    val onItemClicked: (Int) -> Unit
 ): RecyclerView.Adapter<LessonsViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LessonsViewHolder {
         val binding = ItemLessonBinding.inflate(LayoutInflater.from(parent.context), parent, false);
@@ -20,5 +21,8 @@ class LessonsAdapter (
 
     override fun onBindViewHolder(holder: LessonsViewHolder, position: Int) {
         holder.render(lessons[position])
+        holder.itemView.setOnClickListener {
+            onItemClicked(position)
+        }
     }
 }
